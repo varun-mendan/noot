@@ -1,0 +1,55 @@
+/* Main CSS */
+
+
+.main-container{
+	overflow: auto;
+	padding:20px;
+}
+
+.note-list-wrapper{
+	width: 20%;
+}
+
+.note-view{
+	width: 80%;
+}
+
+.note-list-wrapper,
+.note-view{
+	float: left;
+}
+
+#add-note{
+	display: none;
+}
+
+
+/*tablet*/
+
+/*landscape mobile*/
+
+@media screen and (max-width: 480px){
+
+	.main-container{
+		width: 100%;
+	}
+
+	.note-list-wrapper,
+	.note-view{
+		float: none;
+	}
+
+	#add-note{
+		display: block;
+	}
+
+	body.mobile {
+		.note-view{
+			display: none;
+		}
+	}
+
+	.note-list-wrapper{
+		width: 100%;
+	}
+}
