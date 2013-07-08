@@ -10,7 +10,9 @@
   <script src="less.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse ">
+
+    <div class="main-container">
+          <div class="navbar navbar-inverse ">
       <div class="navbar-inner">
           <a class="brand" href="#">Noot</a>
           <ul class="nav">
@@ -19,8 +21,7 @@
           </ul>
       </div>
     </div>
-    <div class="main-container">
-      <a href="#/add" id="add-note" class="btn btn-primary">Add Note</a>
+      <a href="#/addMobile" id="add-note" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Note</a>
         <div class="note-list-wrapper">
         <h3 class="list-header">Saved Notes</h3>
           <ul class="list" id="savedNotes">
@@ -34,55 +35,38 @@
      </div>
 
      <script type="text/template" id="note-view-template">
-        <form class="form-horizontal" id ="new-note" method="post">
-            <fieldset>
-              <legend>New Note</legend>
-              <div class="control-group">
-                <label class="control-label" for="input01">Title:</label>
-                <div class="controls">
-                  <input type="text" class="input-xlarge addName" id="title" name="title" >
+              <div>
+                <label >Title:</label>
+                <div>
+                  <input type="text" id="title" name="title" >
                 </div>
-                <label class="control-label" for="input01">Message:</label>
-                <div class="controls">
-                  <input type="text" class="input-xlarge addName" id="note" name="note" >
+                <label >Message:</label>
+                <div>
+                  <input type="text" id="note" name="note" >
                 </div>
               </div>
-              <div class="control-group">
-                <div class="controls">
-                   
+              <div >
+                   <a href="#" id="cancelBtn" class="btn">cancel</a>
                    <a href="#/add" id="addBtn" class="btn btn-primary">add</a>
-                </div>
               </div>
               
-            </fieldset>
-          </form>
-      
        </script> 
              <script type="text/template" id="edit-view-template">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                      <legend>Edit Note</legend>
-                      <div class="control-group">
-                        <label class="control-label" for="input01">Title:</label>
-                        <div class="controls">
-                          <input type="text" class="input-xlarge addName" id="title" name="title" value ="{{title}}">
+                        <div>
+                          <label >Title:</label>
+                          <div>
+                            <input type="text" id="title" name="title" value="{{title}}">
+                          </div>
+                          <label >Message:</label>
+                          <div>
+                            <input type="text" id="note" name="note" value="{{description}}">
+                          </div>
                         </div>
-                        <label class="control-label" for="input01">Message:</label>
-                        <div class="controls">
-                          <input type="text" class="input-xlarge addName" id="note" name="note" value="{{description}}">
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <div class="controls">
+                        <div >
                           <a href="#/delete/{{id}}" id="deleteBtn" class="btn btn-danger">Delete</a>
                            <a href="#" id="cancelBtn" class="btn">cancel</a>
                            <a href="#/update/{{id}}" id="updateBtn" class="btn">update</a>
-                           
                         </div>
-                      </div>
-                      
-                    </fieldset>
-                  </form>
       </script>
   <script src="jquery-min.js"></script>
   <script src="underscore-min.js"></script>

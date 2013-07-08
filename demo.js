@@ -36,10 +36,6 @@ var NoteView = Backbone.View.extend({
 var EditNoteView = Backbone.View.extend({
     model: Note,
     el: $('.note-view'),
-    initialize: function(){
-
-      
-    },
     render: function(options){
         if(typeof options!='undefined'){
           this.template = $('#edit-view-template').html();
@@ -52,7 +48,7 @@ var EditNoteView = Backbone.View.extend({
           this.$el.append(html);
       }
       else{
-        console.log('en else of edit note');
+        console.log('in else of edit note');
         this.$el.empty();
 
         this.$el.append($('#note-view-template').html());
@@ -92,7 +88,8 @@ var EditNoteView = Backbone.View.extend({
           'add':'addNote',
           'view/:id':"viewNote",
           'update/:id' : "updateNote",
-          'delete/:id' : "deleteNote"
+          'delete/:id' : "deleteNote",
+          'addMobile': "addMobile"
         }
     });
 
@@ -103,11 +100,23 @@ var EditNoteView = Backbone.View.extend({
     router.on('route:home', function(){
       console.log("in home view");
       new EditNoteView().render();
+      router.navigate("#", {trigger: true});
+      
+     if($(window).width()<480){
+            $('.note-list-wrapper').show();
+            $('.note-view').hide();
+        }
     });
 
     router.on('route:viewNote',function(id){
       console.log("in Note view");
+      
       new EditNoteView().render({id:id});
+        if($(window).width()<480){
+            $('.note-list-wrapper').hide();
+            $('.note-view').show();
+        }
+
     });
 
     router.on('route:addNote',function(){
@@ -119,6 +128,10 @@ var EditNoteView = Backbone.View.extend({
         $('#title').val('');
         $('#note').val('');
         router.navigate("#", {trigger: true});
+        if($(window).width()<80){
+            $('.note-list-wrapper').show();
+            $('.note-view').hide();
+        }
     });
 
       router.on('route:updateNote',function(id){
@@ -129,12 +142,27 @@ var EditNoteView = Backbone.View.extend({
       noteToUpdate.set('description',$('#note').val());
       new EditNoteView().render({id:id});
       router.navigate("#", {trigger: true});
+      if($(window).width()<480){
+            $('.note-list-wrapper').show();
+            $('.note-view').hide();
+        }
     });
 
       router.on('route:deleteNote',function(id){
       console.log("in deleteNote mode");
       notes.remove(id);
-      router.navigate("#", {trigger: true});
+       router.navigate("#", {trigger: true});
+      if($(window).width()<480){ 
+            $('.note-list-wrapper').show();
+            $('.note-view').hide();
+        }
+    });
+
+    router.on('route:addMobile',function(){
+      console.log("in Mobile view");
+      $('.note-list-wrapper').hide();
+      $('.note-view').show();
+      //new EditNoteView().render({id:id});
     });
       Backbone.history.start();
 

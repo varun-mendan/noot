@@ -1,29 +1,35 @@
 /* Main CSS */
 
+@media screen and (min-width: 481px){
+	.main-container{
+		overflow: auto;
+		padding:20px;
+	}
 
-.main-container{
-	overflow: auto;
-	padding:20px;
+	.note-list-wrapper{
+		width: 20%;
+		
+	}
+
+	.note-view{
+		width: 80%;
+		
+	}
+
+	li{
+		 list-style-type: none;
+	}
+
+	.note-list-wrapper,
+	.note-view{
+		float: left;
+	}
+
+	#add-note{
+		display: none;
+	}
+
 }
-
-.note-list-wrapper{
-	width: 20%;
-}
-
-.note-view{
-	width: 80%;
-}
-
-.note-list-wrapper,
-.note-view{
-	float: left;
-}
-
-#add-note{
-	display: none;
-}
-
-
 /*tablet*/
 
 /*landscape mobile*/
@@ -41,15 +47,26 @@
 
 	#add-note{
 		display: block;
+		width: 40%;
+		margin: 0 auto;
 	}
 
-	body.mobile {
 		.note-view{
 			display: none;
+			padding: 20%;
+			
 		}
+	li{
+		 list-style-type: none;
 	}
+	
 
 	.note-list-wrapper{
 		width: 100%;
+
+	}
+
+	.note-list-wrapper h3{
+		text-align: center;
 	}
 }
