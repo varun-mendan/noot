@@ -1,6 +1,5 @@
 /* Main CSS */
 
-@media screen and (min-width: 481px){
 	.main-container{
 		overflow: auto;
 		padding:20px;
@@ -13,7 +12,7 @@
 
 	.note-view{
 		width: 80%;
-		
+	
 	}
 
 	li{
@@ -25,48 +24,42 @@
 		float: left;
 	}
 
-	#add-note{
-		display: none;
+	.mobile-menu{
+		display:none;
 	}
 
-}
+
 /*tablet*/
 
 /*landscape mobile*/
 
 @media screen and (max-width: 480px){
 
-	.main-container{
-		width: 100%;
+	.mobile-menu{
+		display:block;	
 	}
-
-	.note-list-wrapper,
-	.note-view{
-		float: none;
-	}
-
-	#add-note{
-		display: block;
-		width: 40%;
-		margin: 0 auto;
-	}
-
-		.note-view{
-			display: none;
-			padding: 20%;
-			
-		}
-	li{
-		 list-style-type: none;
-	}
-	
-
-	.note-list-wrapper{
-		width: 100%;
-
-	}
-
-	.note-list-wrapper h3{
+	.list-header{
+		padding: 10%;
 		text-align: center;
 	}
+	.note-view{
+		padding:10%;
+	
+	}
+
+	.navbar .nav {
+		float: right;
+		margin:0;
+	}
+	.note-list-wrapper{
+		
+	}
+		.desktop-link{
+		display:none;	
+	}
+	.table th, .table td {
+		padding: 10%;
+	}
+
+
 }

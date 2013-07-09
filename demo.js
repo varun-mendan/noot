@@ -23,7 +23,7 @@ var NoteView = Backbone.View.extend({
     model: Note,
     initialize: function(){
 
-      this.template = '<li > <a href="#/view/{{id}}"> <i class="icon-edit"></i> {{title}} </a> </li>';
+      this.template = '<tr> <td> <a href="#/view/{{id}}"> <i class="icon-edit"></i> {{title}} </a> </td> </tr>';
     },
     render: function(){
       var html = Mustache.to_html(this.template, this.model.toJSON());
@@ -88,8 +88,7 @@ var EditNoteView = Backbone.View.extend({
           'add':'addNote',
           'view/:id':"viewNote",
           'update/:id' : "updateNote",
-          'delete/:id' : "deleteNote",
-          'addMobile': "addMobile"
+          'delete/:id' : "deleteNote"
         }
     });
 
@@ -101,21 +100,15 @@ var EditNoteView = Backbone.View.extend({
       console.log("in home view");
       new EditNoteView().render();
       router.navigate("#", {trigger: true});
-      
-     if($(window).width()<480){
-            $('.note-list-wrapper').show();
-            $('.note-view').hide();
-        }
+
+
     });
 
     router.on('route:viewNote',function(id){
       console.log("in Note view");
       
       new EditNoteView().render({id:id});
-        if($(window).width()<480){
-            $('.note-list-wrapper').hide();
-            $('.note-view').show();
-        }
+
 
     });
 
@@ -128,10 +121,7 @@ var EditNoteView = Backbone.View.extend({
         $('#title').val('');
         $('#note').val('');
         router.navigate("#", {trigger: true});
-        if($(window).width()<80){
-            $('.note-list-wrapper').show();
-            $('.note-view').hide();
-        }
+
     });
 
       router.on('route:updateNote',function(id){
@@ -142,28 +132,17 @@ var EditNoteView = Backbone.View.extend({
       noteToUpdate.set('description',$('#note').val());
       new EditNoteView().render({id:id});
       router.navigate("#", {trigger: true});
-      if($(window).width()<480){
-            $('.note-list-wrapper').show();
-            $('.note-view').hide();
-        }
+
     });
 
       router.on('route:deleteNote',function(id){
       console.log("in deleteNote mode");
       notes.remove(id);
        router.navigate("#", {trigger: true});
-      if($(window).width()<480){ 
-            $('.note-list-wrapper').show();
-            $('.note-view').hide();
-        }
+
     });
 
-    router.on('route:addMobile',function(){
-      console.log("in Mobile view");
-      $('.note-list-wrapper').hide();
-      $('.note-view').show();
-      //new EditNoteView().render({id:id});
-    });
+
       Backbone.history.start();
 
 })(jQuery);
